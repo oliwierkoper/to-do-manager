@@ -47,9 +47,12 @@ while True:
                 print("wrong task")
                 continue
             if mark in range(1,len(tasks)+1):
-                tasks[mark-1]["done"] = True
-                save_tasks(tasks)
-                print("task marked as done")
+                if tasks[mark-1]["done"] == False:
+                    tasks[mark-1]["done"] = True
+                    save_tasks(tasks)
+                    print("task marked as done")
+                else:
+                    print("this task is already marked as done")
             else:
                 print("wrong task")
     elif choose =="4":
