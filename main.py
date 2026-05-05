@@ -8,7 +8,7 @@ def save_tasks(tasks):
 
 def display_tasks(tasks):
     for i in range(len(tasks)):
-        print(f"{i+1}. {tasks[i]}")
+        print(f'{i+1}. {tasks[i]["task"]}   done: {tasks[i]["done"]}')
 
 print("choose option")
 print("1.show tasks")
@@ -29,7 +29,10 @@ while True:
         else:
             display_tasks(tasks)
     elif choose == "2":
-        tasks.append(input("task: "))
+        tasks.append({
+            "task": input("task: "),
+            "done": False
+            })
         save_tasks(tasks)
         print("task added")
     elif choose == "3":
@@ -44,7 +47,7 @@ while True:
                 print("wrong task")
                 continue
             if mark in range(1,len(tasks)+1):
-                del tasks[mark-1]
+                tasks[mark-1]["done"] = True
                 save_tasks(tasks)
                 print("task marked as done")
             else:
